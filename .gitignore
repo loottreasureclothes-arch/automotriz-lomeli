@@ -1,0 +1,9 @@
+# Material interno (no se publica)
+aaron/
+audios/
+catalogo/raw/
+catalogo/fotos/
+BRIEF-TREFA.md
+.claude/
+.DS_Store
+# Videos mayores a 50 MB (GitHub los rechaza); hoy no hay ninguno

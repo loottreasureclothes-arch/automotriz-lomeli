@@ -1,0 +1,34 @@
+AUTOMOTRIZ LOMELÍ — SITIO (SEGUNDA RONDA, 11 OCT 2026)
+
+Cómo verlo
+- Doble clic en index.html (funciona sin servidor) o súbelo tal cual a GitHub Pages. Todas las rutas son relativas.
+- Panel administrativo: botón "Acceso administrativo" (menú o pie de página).
+  Usuario: lomeli   ·   Contraseña: la que se entregó por separado (no se publica)
+- Mi cuenta: al crear la cuenta se verifica el correo y el teléfono con códigos de 6 dígitos que aparecen en pantalla (envío real de correo y SMS pendiente).
+
+Páginas
+- index.html ........ Inicio: buscador, tendencia, carrocerías y marcas con conteos, kit de beneficios, recomendados, calculadora, reseñas, FAQ, sucursales, blog y contacto.
+- inventario.html ... Inventario con filtros, orden, chips, paginación. Acepta ?tipo=SUV, ?marca=Toyota, ?sucursal=Sur, ?q=texto.
+- auto.html?id=... .. Ficha del auto: galería, calculadora, ficha técnica, agenda, parecidos, anterior/siguiente, favorito y alerta de precio.
+- vender.html ....... Datos del auto y del cliente; abre WhatsApp para que Lomelí mande la oferta (sin precio automático).
+- credito.html ...... Formulario corto, financieras (pendientes), pasos, autos para financiar, reseñas y FAQ.
+- cita.html ......... Agenda: sucursal, forma de pago, día, hora, datos; folio y envío por WhatsApp.
+- cuenta.html ....... Registro con verificación (correo + SMS), solicitud de crédito, favoritos, citas, alertas, autos para vender y perfil.
+- privacidad.html ... Aviso de privacidad en borrador (faltan razón social, domicilio y correo).
+
+Archivos de código
+- data.js ...... Los 24 autos del catálogo de WhatsApp (fotos en assets/catalogo/), condiciones de pago, bancos, sucursales, kit, reseñas, preguntas y blog. AQUÍ se cambian los datos.
+- common.js .... Encabezado, pie, cookies, favoritos, tarjetas, agenda y utilidades compartidas.
+- admin.js ..... Panel administrativo (inventario con fotos, solicitudes de crédito con estados, venta de autos, citas, prospectos).
+- perfil.js .... Completa tu perfil (2 pasos) y perfilamiento bancario (reglas del puntaje en un comentario).
+- portal.js .... Solicitud de crédito en línea en 7 pasos con firma dibujada.
+- finance.js ... Fórmula de mensualidad (tasa ilustrativa 15% anual).
+- app.js / inventario.js / auto.js / vender.js / credito.js / cita.js / cuenta.js ... Lógica de cada página.
+- style.css (diseño original) + site.css (componentes nuevos).
+
+Importante
+- Todo se guarda en el navegador de quien lo usa (localStorage). Nada llega a Lomelí salvo lo que el cliente mande por WhatsApp.
+- Si se edita el inventario desde el panel, ese navegador deja de leer data.js hasta pulsar "Restaurar catálogo".
+- Al cambiar CSS o JS, sube el número ?v= en los HTML para que los navegadores no usen la versión vieja.
+- Los datos marcados "pendiente" o "ejemplo" deben confirmarse con Lomelí antes de publicar. Ver ENTREGA.md, sección "Segunda ronda".
+- La carpeta backend tiene la estructura de base de datos y los pasos para conectar el sistema real.
