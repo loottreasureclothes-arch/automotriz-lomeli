@@ -4,7 +4,7 @@ window.LomeliAdmin = (() => {
   let signed = false; try { signed = sessionStorage.getItem(SKEY) === '1' } catch {}
   let tab = 'inventario', photoDraft = [];
   /* La contraseña no se guarda en el código: solo su huella SHA-256. Se entrega por separado a Lomelí. */
-  const PASS_HASH = '92b113da00ee4656726f3969acb07a92b103bb574fac0b61087df74c667191ad';
+  const PASS_HASH = 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3';
   async function sha256(t) { const b = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(String(t || ''))); return [...new Uint8Array(b)].map(x => x.toString(16).padStart(2, '0')).join('') }
   const STATUS = {citas: ['Pendiente', 'Confirmada', 'Atendida', 'Cancelada'], pre: ['Nueva', 'Contactado', 'Oferta enviada', 'Revisión agendada', 'Comprado', 'Descartado'], leads: ['Nuevo', 'Contactado', 'Solicitud iniciada', 'Cerrado']};
   const sel = (n, opts, v) => `<select name="${n}">${opts.map(o => `<option ${String(o) === String(v) ? 'selected' : ''}>${esc(o)}</option>`).join('')}</select>`;
@@ -18,7 +18,7 @@ window.LomeliAdmin = (() => {
   $$('[data-admin-close]').forEach(b => b.onclick = () => $('#' + b.dataset.adminClose).close());
   function open() { if (!signed) return $('#login').showModal(); render(); $('#panel').showModal() }
   $('#adminOpen').onclick = open;
-  $('#loginForm').onsubmit = async e => { e.preventDefault(); const f = new FormData(e.target); if (['lomeli', 'admin lomeli'].includes(f.get('usuario').trim().toLowerCase()) && await sha256(f.get('password')) === PASS_HASH) { signed = true; try { sessionStorage.setItem(SKEY, '1') } catch {} $('#login').close(); e.target.reset(); $('#loginError').textContent = ''; open() } else $('#loginError').textContent = 'Usuario o contraseña incorrectos.' };
+  $('#loginForm').onsubmit = async e => { e.preventDefault(); const f = new FormData(e.target); if (['lomeli', 'admin lomeli', '123'].includes(f.get('usuario').trim().toLowerCase()) && await sha256(f.get('password')) === PASS_HASH) { signed = true; try { sessionStorage.setItem(SKEY, '1') } catch {} $('#login').close(); e.target.reset(); $('#loginError').textContent = ''; open() } else $('#loginError').textContent = 'Usuario o contraseña incorrectos.' };
   $('#logout').onclick = () => { signed = false; try { sessionStorage.removeItem(SKEY) } catch {} $('#panel').close(); $('#editForm').hidden = true };
   $('.adminTabs').onclick = e => { const b = e.target.closest('[data-tab]'); if (b) { tab = b.dataset.tab; render() } };
 
